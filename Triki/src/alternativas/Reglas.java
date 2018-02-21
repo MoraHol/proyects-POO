@@ -52,16 +52,17 @@ public class Reglas {
 	}
 
 	public boolean Empate(char[][] tablero) {
-		boolean aux= false,temp = false;
+		int aux = 0;
+		boolean temp = false;
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				if (tablero[i][j] == 'O' || tablero[i][j] == 'X') {
-					aux = true;
-				}else {
-					aux=false;
+					aux += 1;
 				}
-				temp = aux && aux;
 			}
+		}
+		if (aux == 9) {
+			temp = true;
 		}
 		return temp;
 	}

@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Alternativas {
 	static char[][] board = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
-	//instancia de objetos
+	// instancia de objetos
 	static Fill fl = new Fill();
 	static Reglas rl = new Reglas(board);
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,11 +20,10 @@ public class Alternativas {
 			board[i][j] = 'O';
 		} else {
 			System.out.println("Empiezas tu:");
+			PrintMatrix(board);
 			PreguntaPosicion(board);
 		}
 	}
-	
-	
 
 	public static char[][] PreguntaPosicion(char[][] tablero) throws NumberFormatException, IOException {
 		boolean comp = false;
@@ -48,55 +47,35 @@ public class Alternativas {
 		}
 	}
 
-	
-
-	
 	public static void Juego(int inicio) throws NumberFormatException, IOException {
 		if (inicio == 1) {
 			fl.fillMachine(board);
 		}
 		PrintMatrix(board);
-		if (inicio == 0) {
-			for (int z = 0; z < 9; z++) {
-				if (rl.GanadorMachine(board) == false && rl.GanadorUser(board) == false && rl.Empate(board)== false) {
-					PreguntaPosicion(board);
-					board = fl.fillMachine(board);
-					PrintMatrix(board);
-				} else if(rl.GanadorUser(board) == true){
-					System.out.println("el jugador ha ganado");
-					break;
-				}else if(rl.GanadorMachine(board)== true){
-					System.out.println("has perdido");
-					break;
-				}else {
-					System.out.println("hay empate");
-					break;
-				}
-			}
-		} else {
-			for (int z = 0; z < 8; z++) {
-				if (rl.GanadorMachine(board) == false && rl.GanadorUser(board) == false  && rl.Empate(board)== false) {
-					PreguntaPosicion(board);
-					board = fl.fillMachine(board);
-					PrintMatrix(board);
-				} else if(rl.GanadorUser(board) == true){
-					System.out.println("el jugador ha ganado");
-					break;
-				}else if(rl.GanadorMachine(board)== true){
-					System.out.println("has perdido");
-					break;
-				}else {
-					System.out.println("hay empate");
-					break;
-				}
+		while (true) {
+			if (rl.GanadorMachine(board) == false && rl.GanadorUser(board) == false && rl.Empate(board) == false) {
+				PreguntaPosicion(board);
+				board = fl.fillMachine(board);
+				PrintMatrix(board);
+			} else if (rl.GanadorUser(board) == true) {
+				System.out.println("el jugador ha ganado");
+				break;
+			} else if (rl.GanadorMachine(board) == true) {
+				System.out.println("has perdido");
+				break;
+			} else {
+				System.out.println("hay empate");
+				break;
 			}
 		}
+
 	}
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		int inicio = rd.nextInt(2);
 		InicioTurno(inicio);
 		Juego(inicio);
-		
+
 	}
 
 }
