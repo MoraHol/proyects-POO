@@ -45,6 +45,17 @@ public class Cliente {
 		this.interes = interes;
 		System.out.println("la persona se ha registrado.");
 	}
+
+	public Cliente() {
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Nombre del Cliente = " + Nombre + ", Cuenta = " + Cuenta + ", valor = $" + valor + ", interes = %" + interes ;
+	}
+
+	
 	
 
 }
