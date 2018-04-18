@@ -40,10 +40,13 @@ public class buscaminas{
 	}
 	public static int[][] fillMatrixUser(int[][] tablero, int i, int j,int[][] buffer) throws NumberFormatException, IOException {
 		if (buffer[i][j] == 0) {
+			buffer[i][j] = 1;
 			tablero[i][j] = 1;
 		} else if(buffer[i][j] == 1){
 			System.out.println("este lugar ya esta ocupado");
 			PreguntaPosicion(tablero, buffer);
+		} else if (buffer[i][j]==2){
+			tablero[i][j]=2;
 		}
 		return tablero;
 	}
@@ -74,6 +77,8 @@ public class buscaminas{
 			PrintMatrix(matrix);
 			if(end(matrix) == true){
 				System.err.println("has perdido");
+				System.out.println("las minas estan:");
+				PrintMatrix(bufferMatix);
 				break;
 			}
 		}

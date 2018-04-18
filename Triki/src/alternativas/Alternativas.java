@@ -26,7 +26,6 @@ public class Alternativas {
 	}
 
 	public static char[][] PreguntaPosicion(char[][] tablero) throws NumberFormatException, IOException {
-		boolean comp = false;
 		int i, j;
 		System.out.print("eliga la fila en donde quiere jugar:");
 		i = (Integer.parseInt(br.readLine())) - 1;
@@ -51,21 +50,27 @@ public class Alternativas {
 		if (inicio == 1) {
 			fl.fillMachine(board);
 		}
+		boolean m = false;
 		PrintMatrix(board);
-		while (true) {
+		while (m == false) {
 			if (rl.GanadorMachine(board) == false && rl.GanadorUser(board) == false && rl.Empate(board) == false) {
 				PreguntaPosicion(board);
-				board = fl.fillMachine(board);
+				if (rl.contador != 8) {
+					board = fl.fillMachine(board);
+				}
 				PrintMatrix(board);
 			} else if (rl.GanadorUser(board) == true) {
+				m = true;
 				System.out.println("el jugador ha ganado");
-				break;
+				return;
 			} else if (rl.GanadorMachine(board) == true) {
+				m = true;
 				System.out.println("has perdido");
-				break;
+				return;
 			} else {
+				m = true;
 				System.out.println("hay empate");
-				break;
+				return;
 			}
 		}
 

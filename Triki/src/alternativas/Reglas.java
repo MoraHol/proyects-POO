@@ -2,6 +2,7 @@ package alternativas;
 
 public class Reglas {
 	char[][] board;
+	int contador;
 
 	public Reglas(char[][] tablero) {
 		this.board = tablero;
@@ -63,6 +64,8 @@ public class Reglas {
 		}
 		if (aux == 9) {
 			temp = true;
+		}else if(aux == 8) {
+			contador = 8;
 		}
 		return temp;
 	}

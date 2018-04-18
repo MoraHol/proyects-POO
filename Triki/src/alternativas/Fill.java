@@ -21,8 +21,7 @@ public class Fill {
 	}
 
 	public char[][] fillMachine(char[][] tablero) {
-		int i,j;
-		boolean esc = false;
+		int i, j;
 		i = rd.nextInt(3);
 		j = rd.nextInt(3);
 		if (tablero[i][j] == ' ') {
@@ -31,5 +30,6 @@ public class Fill {
 			fillMachine(tablero);
 		}
 		return tablero;
+
 	}
 }
