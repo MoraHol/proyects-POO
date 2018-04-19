@@ -8,6 +8,7 @@ public class Fill {
 	// instancia de objeto
 	static Alternativas al = new Alternativas();
 	static Random rd = new Random();
+	static Inteligencia it = new Inteligencia();
 
 	public static char[][] fillMatrixUser(char[][] tablero, int i, int j) throws NumberFormatException, IOException {
 		if (tablero[i][j] == ' ') {

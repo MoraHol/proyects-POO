@@ -1,13 +1,8 @@
 package alternativas;
 
 public class Inteligencia {
-	char[][] board;
-
-	public Inteligencia(char[][] tablero) {
-		this.board = tablero;
-	}
-
-	public boolean CerrarJugador() {
+	
+	public boolean CerrarJugador(char [][] board) {
 		boolean y = false;
 		if (board[0][0] == 'X' && board[0][1] == 'X' || board[0][0] == 'X' && board[0][2] == 'X'
 				|| board[0][1] == 'X' && board[0][2] == 'X') {
