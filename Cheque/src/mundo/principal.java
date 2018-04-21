@@ -3,7 +3,6 @@ package mundo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -180,7 +179,10 @@ public class principal {
 			}
 		}
 	}
-
+	/**
+	 * Reescribe en el archivo los cheques que se han realizado y lo anterior
+	 * @param archivo - ruta del archivo
+	 */
 	public void EscribirCheques(String archivo) {
 		BufferedWriter bw = null;
 		try {
@@ -232,7 +234,10 @@ public class principal {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Obtiene la fecha en tiempo real utilizando las librerias de java
+	 * @return fecha actual
+	 */
 	public String getFecha() {
 		java.util.Date utilDate = new java.util.Date(); // fecha actual
 		long lnMilisegundos = utilDate.getTime();

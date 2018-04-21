@@ -18,31 +18,75 @@ import net.miginfocom.swing.MigLayout;
 
 public class panelCheque extends JPanel {
 	// -----------------------------------------------------------------
-	// Atributos
-	// -----------------------------------------------------------------
-	/**
-	 * Ventana principal del programa
-	 */
-	private InterfazCheque principal;
-	// -----------------------------------------------------------------
 	// Atributos de la interfaz
 	// -----------------------------------------------------------------
+	/**
+	 * etiqueta para ubicar la palabra banco al inicio del panel
+	 */
 	private final JLabel labBanco;
+	/**
+	 * etiqueta para ubicar la palabra numero de cheque
+	 */
 	private final JLabel lblNoCheque;
+	/**
+	 * campo para visualizar el numero del cheque
+	 */
 	private JTextField txtNoCheque;
+	/**
+	 * etiqueta para ubicar la palabra año encima del campo año
+	 */
 	private JLabel lblAño;
+	/**
+	 * etiqueta para ubicar la palabra día encima del campo día
+	 */
 	private JLabel lblDia;
+	/**
+	 * etiqueta para ubicar la palabra mes encima del campo mes
+	 */
 	private JLabel lblMes;
+	/**
+	 * campo para visualizar el día de la realización del cheque
+	 */
 	private JTextField textDia;
+	/**
+	 * campo para visualizar el mes de la realización del cheque
+	 */
 	private JTextField textMes;
+	/**
+	 * campo para visualizar el año de la realización del cheque
+	 */
 	private JTextField textAño;
+	/**
+	 * etiqueta para ubicar la palabra páguese a 
+	 */
 	private JLabel lblPagueseALa;
+	/**
+	 * campo para visualizar la persona quien va a recibir el cheque
+	 */
 	private JTextField txtPaguese;
+	/**
+	 * etiqueta para ubicar la palabra $ demostrando el monto del cheque
+	 */
 	private JLabel labDinero;
+	/**
+	 * campo para visualizar el monto del cheque
+	 */
 	private JTextField txtDinero;
+	/**
+	 * etiqueta para ubicar la palabra la suma de en el cheque
+	 */
 	private JLabel lblLaSumaDe;
+	/**
+	 * campo para visualizar el monto en palabras
+	 */
 	private JTextField txtSumade;
+	/**
+	 * etiqueta para ubicar la palabra firma dentro del cheque
+	 */
 	private JLabel lblFirma;
+	/**
+	 * campo para visualizar la firma de la persona
+	 */
 	private JTextField txtFirma;
 
 	/**
@@ -68,12 +112,7 @@ public class panelCheque extends JPanel {
 		dia = sfecha[2];
 		mes = sfecha[1];
 		año = sfecha[0];
-		/*if (Integer.parseInt(dia) < 9) {
-			dia = "0" + dia;
-		}
-		if (Integer.parseInt(mes) < 9) {
-			mes = "0" + mes;
-		}*/
+		
 		labBanco = new JLabel("Su Banco");
 		labBanco.setFont(new Font("Baskerville Old Face", Font.PLAIN, 18));
 
@@ -158,15 +197,23 @@ public class panelCheque extends JPanel {
 	}
 
 	// ----------------------------------------------------------------
-	// Metodos
+	// Métodos
 	// ----------------------------------------------------------------
+	/**
+	 * Despliega el monto del cheque formateado
+	 * @param precio - monto del cheque
+	 */
 	private void refrescarPrecio(double precio) {
 		// Despliega el valor del vehículo
 		DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
 		df.applyPattern(" ###,###,###.##");
 		txtDinero.setText(df.format(precio));
 	}
-
+	/**
+	 * convierte un numero a letra para mostrarlo en el cheque
+	 * @param numero - numero a convertir
+	 * @return numero convertido a letra
+	 */
 	private String Nummero_Letra(double numero) {
 		//Numero_a_Letra nm = new Numero_a_Letra();
 		numaLetra nm = new numaLetra();
