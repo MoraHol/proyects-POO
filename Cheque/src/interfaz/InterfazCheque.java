@@ -1,3 +1,13 @@
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * $Id$
+ * Universidad Minuto de Dios (Bogotá - Colombia)
+ * Departamento de IngenierIa de Sistemas 
+ *
+ * Ejercicio: CHEQUES
+ * @author Alexis Holguin - Abr 20, 2018
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 package interfaz;
 
 import java.awt.BorderLayout;
@@ -20,7 +30,7 @@ public class InterfazCheque extends JFrame {
 	// Atributos de la interfaz
 	// -----------------------------------------------------------------
 	private final panelDatos PanelDatos;
-	private principal main;
+	private principal principal;
 	private PanelDatosCheque panelDatosCheque;
 	private ArrayList<panelCheque> paneles;
 	private JPanel panelCheque;
@@ -33,7 +43,7 @@ public class InterfazCheque extends JFrame {
 		setIconImage(
 				Toolkit.getDefaultToolkit().getImage(InterfazCheque.class.getResource("/data/bank-icon_31875.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main = new principal();
+		principal = new principal();
 		// configura la información de la ventana
 		setTitle("Cheques");
 		setSize(800, 300);
@@ -70,7 +80,7 @@ public class InterfazCheque extends JFrame {
 			JOptionPane.showMessageDialog(this, "Por favor llene todos los datos", "Cheque", JOptionPane.ERROR_MESSAGE);
 		} else {
 			try {
-				Persona persona = main.buscarPersona(unNombre, unApellido, unaFecha, unaIdentificacion);
+				Persona persona = principal.buscarPersona(unNombre, unApellido, unaFecha, unaIdentificacion);
 				precio = persona.getSaldo();
 				System.out.println(precio);
 				// Pide al panel que refresque la informacion del precio
@@ -102,7 +112,7 @@ public class InterfazCheque extends JFrame {
 			JOptionPane.showMessageDialog(this, "Por favor llene todos los datos", "Cheque", JOptionPane.ERROR_MESSAGE);
 			return null;
 		} else {
-			Persona persona = main.buscarPersona(unNombre, unApellido, unaFecha, unaIdentificacion);
+			Persona persona = principal.buscarPersona(unNombre, unApellido, unaFecha, unaIdentificacion);
 			for (int i = 0; i < persona.getCheques().size(); i++) {
 				persona.getCheques().get(i);
 				String fecha = persona.getCheques().get(i).getFecha();
@@ -121,8 +131,8 @@ public class InterfazCheque extends JFrame {
 		double unMonto = panelDatosCheque.getMonto();
 		String unDestinatario = panelDatosCheque.getDestinatario();
 		String unaIdentificacion = PanelDatos.getIdentificacion();
-		String unaFecha = main.getFecha();
-		Persona persona = main.buscarPersona(unaIdentificacion);
+		String unaFecha = principal.getFecha();
+		Persona persona = principal.buscarPersona(unaIdentificacion);
 		String firma = persona.getNombre() + " " + persona.getApellido();
 		if (Double.toString(unMonto) == null || unDestinatario.equals("")) {
 			JOptionPane.showMessageDialog(this, "Por favor llene todos los datos", "Cheque", JOptionPane.ERROR_MESSAGE);
@@ -146,15 +156,15 @@ public class InterfazCheque extends JFrame {
 			}
 
 		}
-		main.EscribirCheques("src/data/Cheques.txt");
-		main.EscribirUsuarios("src/data/usuarios.txt");
+		principal.EscribirCheques("src/data/Cheques.txt");
+		principal.EscribirUsuarios("src/data/usuarios.txt");
 	}
 	public void limpiar() {
 		remove(panelDatosCheque);
 		remove(panelCheque);
 		setSize(800, 250);
 		setLocationRelativeTo(null);
-		main.EscribirCheques("src/data/Cheques.txt");
+		principal.EscribirCheques("src/data/Cheques.txt");
 	}
 
 	public static void main(String[] args) {
