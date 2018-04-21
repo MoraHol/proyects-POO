@@ -2,7 +2,7 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * $Id$
  * Universidad Minuto de Dios (Bogotá - Colombia)
- * Departamento de IngenierIa de Sistemas 
+ * Departamento de Ingeniería de Sistemas 
  *
  * Ejercicio: CHEQUES
  * @author Alexis Holguin - Abr 20, 2018
@@ -26,13 +26,32 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class InterfazCheque extends JFrame {
+	/**
+	 * serial de la clase
+	 */
+	private static final long serialVersionUID = 1L;
 	// -----------------------------------------------------------------
 	// Atributos de la interfaz
 	// -----------------------------------------------------------------
+	/**
+	 * panel de datos
+	 */
 	private final panelDatos PanelDatos;
+	/**
+	 * objeto para llamar atributos y métodos de la clase principal
+	 */
 	private principal principal;
+	/**
+	 * panel para pedir los datos del cheque
+	 */
 	private PanelDatosCheque panelDatosCheque;
+	/**
+	 * guardaran los cheques hechos por la persona
+	 */
 	private ArrayList<panelCheque> paneles;
+	/**
+	 * panel para guardar el ultimo cheque realizado
+	 */
 	private JPanel panelCheque;
 	
 
@@ -63,7 +82,9 @@ public class InterfazCheque extends JFrame {
 		
 		
 	}
-
+	/**
+	 * mostrara el saldo de la cuenta de una persona 
+	 */
 	public void calcularSaldoPresona() {
 		// Pide la información dada por el usuario al respectivo panel
 
@@ -97,7 +118,10 @@ public class InterfazCheque extends JFrame {
 			}
 		}
 	}
-
+	/**
+	 * agregara todos los cheques realizados por dicha persona y será almacenados en un ArrayList
+	 * @return el ArrayList con todos los cheques realizados
+	 */
 	public ArrayList<panelCheque> MostrarCheques() {
 		paneles = new ArrayList<>();
 		panelCheque panelCheck;
@@ -126,7 +150,9 @@ public class InterfazCheque extends JFrame {
 		}
 		return paneles;
 	}
-
+	/**
+	 * agrega cheque a una persona y los muestra en el panel
+	 */
 	public void agregarCheque() {
 		double unMonto = panelDatosCheque.getMonto();
 		String unDestinatario = panelDatosCheque.getDestinatario();
@@ -159,6 +185,9 @@ public class InterfazCheque extends JFrame {
 		principal.EscribirCheques("src/data/Cheques.txt");
 		principal.EscribirUsuarios("src/data/usuarios.txt");
 	}
+	/**
+	 * limpiara todo
+	 */
 	public void limpiar() {
 		remove(panelDatosCheque);
 		remove(panelCheque);

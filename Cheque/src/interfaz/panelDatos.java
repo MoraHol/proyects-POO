@@ -32,7 +32,7 @@ public class panelDatos extends JPanel implements ActionListener {
 	// -----------------------------------------------------------------
 	private final static String LISTAR = "listar";
 	/**
-	 * Comando de busqueda
+	 * Comando de búsqueda
 	 */
 	public final static String BUSCAR = "buscar";
 	/**
@@ -60,6 +60,14 @@ public class panelDatos extends JPanel implements ActionListener {
 	 */
 	private final JTextField txtSaldo;
 	/**
+	 * campo de texto para visualizar la identificación 
+	 */
+	private JTextField txtIdentificacion;
+	/**
+	 * campo de texto para visualizar el numero de la calle
+	 */
+	private JTextField txtNumCalle;
+	/**
 	 * Etiqueta para ubicar la palabra nombre antes del campo nombre
 	 */
 	private final JLabel labNombre;
@@ -73,17 +81,21 @@ public class panelDatos extends JPanel implements ActionListener {
 	 */
 	private final JLabel labFNacimineto;
 	/**
-	 * Etiqueta para ubicar la palabra direccion antes del campo direccion
+	 * Etiqueta para ubicar la palabra dirección antes del campo dirección
 	 */
 	private final JLabel labDireccion;
 	/**
-	 * Etiqueta para ubicar la palabra telefono antes del campo telefono
+	 * Etiqueta para ubicar la palabra teléfono antes del campo teléfono
 	 */
 	private final JLabel labTelefono;
 	/**
 	 * etiqueta para ubicar la palabra saldo antes del campo saldo
 	 */
 	private final JLabel labSaldo;
+	/**
+	 * Etiqueta para ubicar la palabra identificación antes del campo identificación
+	 */
+	private JLabel labIndentificacion;
 	/**
 	 * Botón para buscar
 	 */
@@ -93,23 +105,33 @@ public class panelDatos extends JPanel implements ActionListener {
 	 */
 	private final JButton butLimpiar;
 	/**
-	 * Selección multiple para el día
-	 */
-	private JComboBox<Integer> comboBoxDia;
-	private JComboBox comboBoxMes;
-	private JComboBox<String> comboBoxAño;
-	private JComboBox comboBoxcalle;
-	private JTextField txtNumCalle;
-	private JLabel labIndentificacion;
-	private JTextField txtIdentificacion;
-	/**
 	 * Button para mostrar cheques
 	 */
 	private final JButton butCheques;
+	/**
+	 * Selección multiple para el día
+	 */
+	private JComboBox<Integer> comboBoxDia;
+	/**
+	 * Selección multiple para el Mes 
+	 */
+	private JComboBox comboBoxMes;
+	/**
+	 * Selección multiple para el año
+	 */
+	private JComboBox<String> comboBoxAño;
+	/**
+	 * Selección multiple para la calle
+	 */
+	private JComboBox comboBoxcalle;
 
 	// -----------------------------------------------------------------
 	// Constructores
 	// -----------------------------------------------------------------
+	/**
+	 * 
+	 * @param principalP - interfaz principal
+	 */
 	public panelDatos(InterfazCheque principalP) {
 		// establece referencia a la ventana principal
 		principal = principalP;
@@ -224,16 +246,27 @@ public class panelDatos extends JPanel implements ActionListener {
 		add(butBuscar);
 		add(butLimpiar);
 	}
-
-	// meotodos
+	// -----------------------------------------------------------------
+	// Métodos 
+	// -----------------------------------------------------------------
+	/**
+	 * devuelve el nombre ingresado en el campo
+	 * @return nombre ingresado
+	 */
 	public String getNombre() {
 		return txtNombre.getText().toLowerCase();
 	}
-
+	/**
+	 * devuelve el apellido ingresado en el campo
+	 * @return apellido ingresado
+	 */
 	public String getApellido() {
 		return txtApellido.getText().toLowerCase();
 	}
-
+	/**
+	 * devuelve la fecha de nacimiento ingresada en el campo
+	 * @return fecha de nacimiento ingresado
+	 */
 	public String getFechaNacimiento() {
 		String conversion = "";
 		conversion += Integer.toString(comboBoxDia.getSelectedIndex() + 1) + "/";
@@ -244,7 +277,10 @@ public class panelDatos extends JPanel implements ActionListener {
 		System.out.println(conversion);
 		return conversion;
 	}
-
+	/**
+	 * devuelve la dirección ingresada en el campo
+	 * @return dirección ingresado
+	 */
 	public String getDireccion() {
 		String conversion = "";
 		conversion += comboBoxcalle.getSelectedItem() + " ";
@@ -252,22 +288,32 @@ public class panelDatos extends JPanel implements ActionListener {
 		conversion += txtDireccion.getText().toLowerCase();
 		return conversion;
 	}
-
+	/**
+	 * devuelve el teléfono ingresada en el campo
+	 * @return teléfono ingresado
+	 */
 	public String getTelefono() {
 		return txtTelefono.getText();
 	}
-
+	/**
+	 * devuelve la identificación ingresada en el campo
+	 * @return identificación ingresada
+	 */
 	public String getIdentificacion() {
 		return txtIdentificacion.getText();
 	}
-
+	/**
+	 * Despliega el saldo de la cuenta
+	 * @param precio - el saldo que tiene la cuenta
+	 */
 	public void refrescarPrecio(double precio) {
-		// Despliega el valor del vehículo
 		DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
 		df.applyPattern("$ ###,###.##");
 		txtSaldo.setText(df.format(precio));
 	}
-
+	/**
+	 * limpiara todos los campos, borrara los paneles de ultimo cheque y panel de datos de cheque
+	 */
 	private void limpiar() {
 		txtNombre.setText("");
 		txtApellido.setText("");
@@ -282,9 +328,12 @@ public class panelDatos extends JPanel implements ActionListener {
 		comboBoxMes.setSelectedIndex(0);
 		comboBoxAño.setSelectedIndex(0);
 		comboBoxcalle.setSelectedIndex(0);
+		txtIdentificacion.setText("");
 		principal.limpiar();
 	}
-
+	/**
+	 * Abrirá la interfaz donde mostrará los cheques hechos por el usuario 
+	 */
 	private void listar() {
 		InterfazLista interfaz = new InterfazLista(principal);
 		if (interfaz.getPaneles() != null) {

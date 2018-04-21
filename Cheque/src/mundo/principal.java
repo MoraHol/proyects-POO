@@ -10,14 +10,37 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class principal {
+	// ------------------------------------------------------------------------------
+	// Atributos
+	// ------------------------------------------------------------------------------
 	private ArrayList<Persona> personas;
 
+	// ------------------------------------------------------------------------------
+	// Constructor
+	// ------------------------------------------------------------------------------
+	/**
+	 * carga el Arraylist con todas las personas y los cheques encontrados en los
+	 * archivos
+	 * 
+	 * @throws Exception
+	 */
 	public principal() throws Exception {
 		personas = new ArrayList<Persona>();
 		cargarPersonas("src/data/usuarios.txt");
 		cargarCheques("src/data/Cheques.txt");
 	}
 
+	// ------------------------------------------------------------------------------
+	// Métodos
+	// ------------------------------------------------------------------------------
+	/**
+	 * buscar a una persona por nombre,apellido,fecha de nacimiento,identificación.
+	 * @param sNombre - nombre de la persona a buscar	
+	 * @param sApellido - apellido de la persona a buscar
+	 * @param sFechaNacimento - fecha de nacimiento de la persona a buscar
+	 * @param sIdentificacion - numero de identificación de la persona a buscar
+	 * @return null si no la encuentra y la persona si la encuentra
+	 */
 	public Persona buscarPersona(String sNombre, String sApellido, String sFechaNacimento, String sIdentificacion) {
 		Persona unaPersona = null;
 		for (int i = 0; i < personas.size() && unaPersona == null; i++) {
@@ -30,7 +53,11 @@ public class principal {
 		return unaPersona;
 
 	}
-
+	/**
+	 * buscar persona solo por numero de identificación
+	 * @param sIdentificacion - numero de identificación de la persona a buscar
+	 * @return null si no la encuentra y la persona si la encuentra
+	 */
 	public Persona buscarPersona(String sIdentificacion) {
 		Persona unaPersona = null;
 		for (int i = 0; i < personas.size() && unaPersona == null; i++) {
@@ -42,14 +69,21 @@ public class principal {
 		return unaPersona;
 
 	}
-
+	/**
+	 * si la persona no se encuentra la adiciona
+	 * @param unaPersona persona a adicionar o no
+	 */
 	private void adicionarPersona(Persona unaPersona) {
 		if (buscarPersona(unaPersona.getNombre(), unaPersona.getApellido(), unaPersona.getFnacimiento(),
 				unaPersona.getIdentificacion()) == null) {
 			personas.add(unaPersona);
 		}
 	}
-
+	/**
+	 * cargar todas las personas leídas en el archivo
+	 * @param archivo - ruta del archivo
+	 * @throws Exception
+	 */
 	private void cargarPersonas(String archivo) throws Exception {
 		Persona persona;
 		BufferedReader lector;
@@ -96,7 +130,11 @@ public class principal {
 			}
 		}
 	}
-
+	/**
+	 * cargar todos los cheques leídos en el archivo
+	 * @param archivo - ruta del archivo
+	 * @throws Exception
+	 */
 	private void cargarCheques(String archivo) throws Exception {
 		Cheque cheque;
 		String texto, valores[], sIndentificacion, sFecha, sDestinatario;
@@ -143,7 +181,7 @@ public class principal {
 		}
 	}
 
-	public void EscribirCheques(String archivo){
+	public void EscribirCheques(String archivo) {
 		BufferedWriter bw = null;
 		try {
 			bw = new BufferedWriter(new FileWriter(archivo));
@@ -155,7 +193,7 @@ public class principal {
 			for (int j = 0; j < persona.getCheques().size(); j++) {
 				Cheque cheque = persona.getCheques().get(j);
 				try {
-					bw.write(cheque.tostring() + "\n");
+					bw.write(cheque.toString() + "\n");
 				} catch (IOException e) {
 					// TODO Bloque catch generado automáticamente
 					e.printStackTrace();
