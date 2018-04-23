@@ -274,7 +274,6 @@ public class panelDatos extends JPanel implements ActionListener {
 				? "0" + Integer.toString(comboBoxMes.getSelectedIndex() + 1) + "/"
 				: Integer.toString(comboBoxMes.getSelectedIndex() + 1) + "/";
 		conversion += comboBoxAño.getSelectedItem();
-		System.out.println(conversion);
 		return conversion;
 	}
 	/**
@@ -308,7 +307,7 @@ public class panelDatos extends JPanel implements ActionListener {
 	 */
 	public void refrescarPrecio(double precio) {
 		DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
-		df.applyPattern("$ ###,###.##");
+		df.applyPattern("$ ###,###,###.##");
 		txtSaldo.setText(df.format(precio));
 	}
 	/**

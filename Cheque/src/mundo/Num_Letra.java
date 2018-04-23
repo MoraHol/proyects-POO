@@ -1,33 +1,18 @@
 package mundo;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
-public class numaLetra {
-	private int flag;
-	private int numero;
-	private String importe_parcial;
-	private String num;
-	private String num_letra;
-	private String num_letras;
-	private String num_letram;
-	private String num_letradm;
-	private String num_letracm;
-	private String num_letramm;
-	private String num_letradmm;
-	private String num_letracmm;
+public class Num_Letra {
+	boolean flag = false;
 
-	public numaLetra() {
-		numero = 0;
-		flag = 0;
-	}
-
-	public numaLetra(int n) {
-		numero = n;
-		flag = 0;
+	public Num_Letra() {
+		// TODO Apéndice de constructor generado automáticamente
 	}
 
 	private String unidad(int numero) {
 
+		String num = null;
 		switch (numero) {
 		case 9:
 			num = "nueve";
@@ -54,10 +39,12 @@ public class numaLetra {
 			num = "dos";
 			break;
 		case 1:
-			if (flag == 0)
+			if (flag == true) {
 				num = "uno";
-			else
+			} else {
 				num = "un";
+			}
+
 			break;
 		case 0:
 			num = "";
@@ -68,39 +55,61 @@ public class numaLetra {
 
 	private String decena(int numero) {
 
+		String num_letra = null;
 		if (numero >= 90 && numero <= 99) {
 			num_letra = "noventa ";
-			if (numero > 90)
+			if (numero > 90) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 90));
+			}
 		} else if (numero >= 80 && numero <= 89) {
 			num_letra = "ochenta ";
-			if (numero > 80)
+			if (numero > 80) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 80));
+			}
+
 		} else if (numero >= 70 && numero <= 79) {
 			num_letra = "setenta ";
-			if (numero > 70)
+			if (numero > 70) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 70));
+			}
+
 		} else if (numero >= 60 && numero <= 69) {
 			num_letra = "sesenta ";
-			if (numero > 60)
+			if (numero > 60) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 60));
+			}
+
 		} else if (numero >= 50 && numero <= 59) {
 			num_letra = "cincuenta ";
-			if (numero > 50)
+			if (numero > 50) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 50));
+			}
 		} else if (numero >= 40 && numero <= 49) {
 			num_letra = "cuarenta ";
-			if (numero > 40)
+			if (numero > 40) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 40));
+			}
+
 		} else if (numero >= 30 && numero <= 39) {
 			num_letra = "treinta ";
-			if (numero > 30)
+			if (numero > 30) {
+				flag = true;
 				num_letra = num_letra.concat("y ").concat(unidad(numero - 30));
+			}
+
 		} else if (numero >= 20 && numero <= 29) {
-			if (numero == 20)
+			if (numero == 20) {
 				num_letra = "veinte ";
-			else
+			} else {
+				flag = true;
 				num_letra = "veinti".concat(unidad(numero - 20));
+			}
 		} else if (numero >= 10 && numero <= 19) {
 			switch (numero) {
 			case 10:
@@ -109,58 +118,41 @@ public class numaLetra {
 				break;
 
 			case 11:
-
 				num_letra = "once ";
 				break;
-
 			case 12:
-
 				num_letra = "doce ";
 				break;
-
 			case 13:
-
 				num_letra = "trece ";
 				break;
-
 			case 14:
-
 				num_letra = "catorce ";
 				break;
-
 			case 15:
-
 				num_letra = "quince ";
 				break;
-
 			case 16:
-
 				num_letra = "dieciseis ";
 				break;
-
 			case 17:
-
 				num_letra = "diecisiete ";
 				break;
-
 			case 18:
-
 				num_letra = "dieciocho ";
 				break;
-
 			case 19:
-
 				num_letra = "diecinueve ";
 				break;
-
 			}
-		} else
+		} else {
 			num_letra = unidad(numero);
-
+		}
 		return num_letra;
 	}
 
 	private String centena(int numero) {
+		String num_letra = null;
 		if (numero >= 100) {
 			if (numero >= 900 && numero <= 999) {
 				num_letra = "novecientos ";
@@ -206,102 +198,6 @@ public class numaLetra {
 		return num_letra;
 	}
 
-	private String miles(int numero) {
-		if (numero >= 1000 && numero < 2000) {
-			num_letram = ("mil ").concat(centena(numero % 1000));
-		}
-		if (numero >= 2000 && numero < 10000) {
-			flag = 1;
-			num_letram = unidad(numero / 1000).concat(" mil ").concat(centena(numero % 1000));
-		}
-		if (numero < 1000)
-			num_letram = centena(numero);
-
-		return num_letram;
-	}
-
-	private String decmiles(int numero) {
-		if (numero == 10000)
-			num_letradm = "diez mil";
-		if (numero > 10000 && numero < 20000) {
-			flag = 1;
-			num_letradm = decena(numero / 1000).concat("mil ").concat(centena(numero % 1000));
-		}
-		if (numero >= 20000 && numero < 100000) {
-			flag = 1;
-			num_letradm = decena(numero / 1000).concat(" mil ").concat(miles(numero % 1000));
-		}
-
-		if (numero < 10000)
-			num_letradm = miles(numero);
-
-		return num_letradm;
-	}
-
-	private String cienmiles(int numero) {
-		if (numero == 100000)
-			num_letracm = "cien mil";
-		if (numero >= 100000 && numero < 1000000) {
-			flag = 1;
-			num_letracm = centena(numero / 1000).concat(" mil ").concat(centena(numero % 1000));
-		}
-		if (numero < 100000)
-			num_letracm = decmiles(numero);
-		return num_letracm;
-	}
-
-	private String millon(int numero) {
-		if (numero >= 1000000 && numero < 2000000) {
-			flag = 1;
-			num_letramm = ("Un millon ").concat(cienmiles(numero % 1000000));
-		}
-		if (numero >= 2000000 && numero < 10000000) {
-			flag = 1;
-			num_letramm = unidad(numero / 1000000).concat(" millones ").concat(cienmiles(numero % 1000000));
-		}
-		if (numero < 1000000)
-			num_letramm = cienmiles(numero);
-
-		return num_letramm;
-	}
-
-	private String decmillon(int numero) {
-		if (numero == 10000000)
-			num_letradmm = "diez millones";
-		if (numero > 10000000 && numero < 20000000) {
-			flag = 1;
-			num_letradmm = decena(numero / 1000000).concat("millones ").concat(cienmiles(numero % 1000000));
-		}
-		if (numero >= 20000000 && numero < 100000000) {
-			flag = 1;
-			num_letradmm = decena(numero / 1000000).concat(" milllones ").concat(millon(numero % 1000000));
-		}
-
-		if (numero < 10000000)
-			num_letradmm = millon(numero);
-
-		return num_letradmm;
-	}
-
-	private String cenmillon(double numero) {
-		if (numero == 100000000)
-			num_letracmm = "diez millones";
-		if (numero > 100000000 && numero < 200000000) {
-			flag = 1;
-			num_letracmm = centena((int) numero / 1000000).concat("millones ")
-					.concat(cienmiles((int) numero % 1000000));
-		}
-		if (numero >= 200000000 && numero < 1000000000) {
-			flag = 1;
-			num_letracmm = centena((int) numero / 1000000).concat(" milllones ").concat(millon((int) numero % 1000000));
-		}
-
-		if (numero < 100000000)
-			num_letracmm = decmillon((int) numero);
-		return num_letracmm;
-
-	}
-
 	private String numeroAString(double numero) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		String number = "";
@@ -335,19 +231,36 @@ public class numaLetra {
 		return number;
 	}
 
-	public String convertirLetras(double numero) {
-		String number = numeroAString(numero);
+	public String numletra(double num) {
+		String[] valores;
+		String number = numeroAString(num);
 		number = number.replace(".", ",");
-		// si el numero no tiene parte decimal, se le agrega ,00
 		if (number.indexOf(",") == -1) {
 			number = number + ",00";
 		}
-
-		String Num[] = number.split(",");
-		int num = Integer.parseInt(Num[0]);
-		String decimales = Num[1] + "/100 pesos.";
-		num_letras = cenmillon(num) + " " + decimales;
-		return num_letras.toUpperCase();
+		valores = number.split(",");
+		String decimas = valores[1];
+		String Millon, mil, centenas;
+		DecimalFormat df = new DecimalFormat("###,###,###.##");
+		number = String.valueOf(df.format(num));
+		number = number.replace(".", ",");
+		valores = number.split(",");
+		number = df.format(num);
+		if (num >= 1000000) {
+			Millon = centena(Integer.parseInt(valores[0])) + " millones ";
+			mil = centena(Integer.parseInt(valores[1])) + " mil ";
+			centenas = centena(Integer.parseInt(valores[2]));
+		} else {
+			Millon = "";
+			if (num >= 1000) {
+				mil = centena(Integer.parseInt(valores[0])) + " mil ";
+				centenas = centena(Integer.parseInt(valores[1]));
+			} else {
+				mil = "";
+				centenas = centena(Integer.parseInt(valores[0]));
+			}
+		}
+		String numero = Millon + mil + centenas + " " + decimas + "/100 pesos";
+		return numero;
 	}
-
 }

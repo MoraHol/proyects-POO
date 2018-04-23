@@ -53,7 +53,6 @@ public class InterfazCheque extends JFrame {
 	 * panel para guardar el ultimo cheque realizado
 	 */
 	private JPanel panelCheque;
-	
 
 	// -----------------------------------------------------------------
 	// Constructor
@@ -73,17 +72,17 @@ public class InterfazCheque extends JFrame {
 		// crea los paneles y lo agrega a la ventana
 		PanelDatos = new panelDatos(this);
 		getContentPane().add(PanelDatos);
-		panelCheque =  new JPanel();
-		panelCheque.setSize(800,200);
-		
+		panelCheque = new JPanel();
+		panelCheque.setSize(800, 200);
+
 		TitledBorder border = BorderFactory.createTitledBorder("Ultimo cheque");
 		border.setTitleColor(Color.BLUE);
 		panelCheque.setBorder(border);
-		
-		
+
 	}
+
 	/**
-	 * mostrara el saldo de la cuenta de una persona 
+	 * mostrara el saldo de la cuenta de una persona
 	 */
 	public void calcularSaldoPresona() {
 		// Pide la información dada por el usuario al respectivo panel
@@ -103,7 +102,6 @@ public class InterfazCheque extends JFrame {
 			try {
 				Persona persona = principal.buscarPersona(unNombre, unApellido, unaFecha, unaIdentificacion);
 				precio = persona.getSaldo();
-				System.out.println(precio);
 				// Pide al panel que refresque la informacion del precio
 				PanelDatos.refrescarPrecio(precio);
 				panelDatosCheque = new PanelDatosCheque(this);
@@ -118,8 +116,11 @@ public class InterfazCheque extends JFrame {
 			}
 		}
 	}
+
 	/**
-	 * agregara todos los cheques realizados por dicha persona y será almacenados en un ArrayList
+	 * agregara todos los cheques realizados por dicha persona y será almacenados en
+	 * un ArrayList
+	 * 
 	 * @return el ArrayList con todos los cheques realizados
 	 */
 	public ArrayList<panelCheque> MostrarCheques() {
@@ -150,6 +151,7 @@ public class InterfazCheque extends JFrame {
 		}
 		return paneles;
 	}
+
 	/**
 	 * agrega cheque a una persona y los muestra en el panel
 	 */
@@ -185,6 +187,7 @@ public class InterfazCheque extends JFrame {
 		principal.EscribirCheques("src/data/Cheques.txt");
 		principal.EscribirUsuarios("src/data/usuarios.txt");
 	}
+
 	/**
 	 * limpiara todo
 	 */

@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import mundo.Num_Letra;
 import mundo.numaLetra;
 import net.miginfocom.swing.MigLayout;
 
@@ -216,9 +217,9 @@ public class panelCheque extends JPanel {
 	 */
 	private String Nummero_Letra(double numero) {
 		//Numero_a_Letra nm = new Numero_a_Letra();
-		numaLetra nm = new numaLetra();
-		String mn = nm.convertirLetras(numero);
-		return mn;
+		Num_Letra nm = new Num_Letra();
+		String letra = nm.numletra(numero);
+		return letra;
 	}
 	
 }
