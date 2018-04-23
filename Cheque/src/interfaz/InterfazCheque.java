@@ -24,6 +24,10 @@ import mundo.principal;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import java.awt.Button;
+import javax.swing.JButton;
 
 public class InterfazCheque extends JFrame {
 	/**
@@ -53,6 +57,10 @@ public class InterfazCheque extends JFrame {
 	 * panel para guardar el ultimo cheque realizado
 	 */
 	private JPanel panelCheque;
+	/**
+	 * panel para generar consignaciones
+	 */
+	protected InterfazConsignar InterfazConsig;
 
 	// -----------------------------------------------------------------
 	// Constructor
@@ -103,6 +111,7 @@ public class InterfazCheque extends JFrame {
 				Persona persona = principal.buscarPersona(unNombre, unApellido, unaFecha, unaIdentificacion);
 				precio = persona.getSaldo();
 				// Pide al panel que refresque la informacion del precio
+				remove(panelCheque);
 				PanelDatos.refrescarPrecio(precio);
 				panelDatosCheque = new PanelDatosCheque(this);
 				getContentPane().add(panelDatosCheque, BorderLayout.SOUTH);
@@ -110,7 +119,7 @@ public class InterfazCheque extends JFrame {
 				setLocationRelativeTo(null);
 			} catch (Exception e) {
 				// Presenta al usuario el mensaje de la excepcion
-				JOptionPane.showMessageDialog(this, "No se encuentra registrado", "Calculo de Impuestos",
+				JOptionPane.showMessageDialog(this, "No se encuentra registrado", "Cheques",
 						JOptionPane.WARNING_MESSAGE);
 				PanelDatos.refrescarPrecio(precio);
 			}
@@ -186,6 +195,28 @@ public class InterfazCheque extends JFrame {
 		}
 		principal.EscribirCheques("src/data/Cheques.txt");
 		principal.EscribirUsuarios("src/data/usuarios.txt");
+	}
+
+	public void consignar() {
+		double unMonto = InterfazConsig.getMonto();
+		String unaIdentificacion = InterfazConsig.getIdentificacion();
+		if (Double.toString(unMonto).equals("") || unaIdentificacion.equals("")) {
+			JOptionPane.showMessageDialog(InterfazConsig, "Por favor llene todos los datos", "Consignaciones", JOptionPane.ERROR_MESSAGE);
+		} else {
+			Persona persona = principal.buscarPersona(unaIdentificacion);
+			if(persona == null) {
+				JOptionPane.showMessageDialog(InterfazConsig, "No esta registrada la persona a quien desea consignar","consignaciones",JOptionPane.WARNING_MESSAGE);
+			}else {
+				try {
+				persona.consignar(unMonto);
+				JOptionPane.showMessageDialog(InterfazConsig, "la coginacion fue realizada correctamente","Consignaciones", JOptionPane.INFORMATION_MESSAGE);
+				principal.EscribirUsuarios("src/data/usuarios.txt");
+				}catch (Exception e) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(InterfazConsig, "la coginacion no fue realizada correctamente revise los datos","Consignaciones", JOptionPane.ERROR_MESSAGE);
+				} 
+			}
+		}
 	}
 
 	/**

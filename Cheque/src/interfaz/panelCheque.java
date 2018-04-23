@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import mundo.Num_Letra;
-import mundo.numaLetra;
 import net.miginfocom.swing.MigLayout;
 
 public class panelCheque extends JPanel {
@@ -91,7 +90,7 @@ public class panelCheque extends JPanel {
 	private JTextField txtFirma;
 
 	/**
-	 * Create the frame.
+	 * crear el panel con todos sus datos.
 	 */
 	public panelCheque(String fecha, int numero, double consignacion, String destinatario,
 			String firma) {
@@ -216,7 +215,6 @@ public class panelCheque extends JPanel {
 	 * @return numero convertido a letra
 	 */
 	private String Nummero_Letra(double numero) {
-		//Numero_a_Letra nm = new Numero_a_Letra();
 		Num_Letra nm = new Num_Letra();
 		String letra = nm.numletra(numero);
 		return letra;

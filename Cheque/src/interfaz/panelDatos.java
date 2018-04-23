@@ -30,6 +30,9 @@ public class panelDatos extends JPanel implements ActionListener {
 	// -----------------------------------------------------------------
 	// Atributos de la interfaz
 	// -----------------------------------------------------------------
+	/**
+	 * comadno para mostrar cheque
+	 */
 	private final static String LISTAR = "listar";
 	/**
 	 * Comando de búsqueda
@@ -39,6 +42,10 @@ public class panelDatos extends JPanel implements ActionListener {
 	 * comando limpiar
 	 */
 	public final static String LIMPIAR = "limpiar";
+	/**
+	 * comando para consignar
+	 */
+	public final static String CONSIGNAR = "consignar";
 	/**
 	 * campo de texto para escribir y visualizar el nombre del usuario
 	 */
@@ -60,7 +67,7 @@ public class panelDatos extends JPanel implements ActionListener {
 	 */
 	private final JTextField txtSaldo;
 	/**
-	 * campo de texto para visualizar la identificación 
+	 * campo de texto para visualizar la identificación
 	 */
 	private JTextField txtIdentificacion;
 	/**
@@ -109,11 +116,15 @@ public class panelDatos extends JPanel implements ActionListener {
 	 */
 	private final JButton butCheques;
 	/**
+	 * boton para consignar
+	 */
+	private final JButton butConsignar;
+	/**
 	 * Selección multiple para el día
 	 */
 	private JComboBox<Integer> comboBoxDia;
 	/**
-	 * Selección multiple para el Mes 
+	 * Selección multiple para el Mes
 	 */
 	private JComboBox comboBoxMes;
 	/**
@@ -130,7 +141,8 @@ public class panelDatos extends JPanel implements ActionListener {
 	// -----------------------------------------------------------------
 	/**
 	 * 
-	 * @param principalP - interfaz principal
+	 * @param principalP
+	 *            - interfaz principal
 	 */
 	public panelDatos(InterfazCheque principalP) {
 		// establece referencia a la ventana principal
@@ -191,6 +203,9 @@ public class panelDatos extends JPanel implements ActionListener {
 		butCheques = new JButton("Cheques Realizados");
 		butCheques.setActionCommand(LISTAR);
 		butCheques.addActionListener(this);
+		butConsignar = new JButton("Consignar");
+		butConsignar.setActionCommand(CONSIGNAR);
+		butConsignar.addActionListener(this);
 		// comobo box para la fecha de nacimineto y el tipo de calle
 		comboBoxMes = new JComboBox();
 		comboBoxMes.setModel(new DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo",
@@ -241,30 +256,36 @@ public class panelDatos extends JPanel implements ActionListener {
 		add(new JLabel(""));
 		add(new JLabel(""));
 		add(new JLabel(""));
-		add(new JLabel(""));
+		add(butConsignar);
 		add(butCheques);
 		add(butBuscar);
 		add(butLimpiar);
 	}
+
 	// -----------------------------------------------------------------
-	// Métodos 
+	// Métodos
 	// -----------------------------------------------------------------
 	/**
 	 * devuelve el nombre ingresado en el campo
+	 * 
 	 * @return nombre ingresado
 	 */
 	public String getNombre() {
 		return txtNombre.getText().toLowerCase();
 	}
+
 	/**
 	 * devuelve el apellido ingresado en el campo
+	 * 
 	 * @return apellido ingresado
 	 */
 	public String getApellido() {
 		return txtApellido.getText().toLowerCase();
 	}
+
 	/**
 	 * devuelve la fecha de nacimiento ingresada en el campo
+	 * 
 	 * @return fecha de nacimiento ingresado
 	 */
 	public String getFechaNacimiento() {
@@ -276,8 +297,10 @@ public class panelDatos extends JPanel implements ActionListener {
 		conversion += comboBoxAño.getSelectedItem();
 		return conversion;
 	}
+
 	/**
 	 * devuelve la dirección ingresada en el campo
+	 * 
 	 * @return dirección ingresado
 	 */
 	public String getDireccion() {
@@ -287,31 +310,40 @@ public class panelDatos extends JPanel implements ActionListener {
 		conversion += txtDireccion.getText().toLowerCase();
 		return conversion;
 	}
+
 	/**
 	 * devuelve el teléfono ingresada en el campo
+	 * 
 	 * @return teléfono ingresado
 	 */
 	public String getTelefono() {
 		return txtTelefono.getText();
 	}
+
 	/**
 	 * devuelve la identificación ingresada en el campo
+	 * 
 	 * @return identificación ingresada
 	 */
 	public String getIdentificacion() {
 		return txtIdentificacion.getText();
 	}
+
 	/**
 	 * Despliega el saldo de la cuenta
-	 * @param precio - el saldo que tiene la cuenta
+	 * 
+	 * @param precio
+	 *            - el saldo que tiene la cuenta
 	 */
 	public void refrescarPrecio(double precio) {
 		DecimalFormat df = (DecimalFormat) NumberFormat.getInstance();
 		df.applyPattern("$ ###,###,###.##");
 		txtSaldo.setText(df.format(precio));
 	}
+
 	/**
-	 * limpiara todos los campos, borrara los paneles de ultimo cheque y panel de datos de cheque
+	 * limpiara todos los campos, borrara los paneles de ultimo cheque y panel de
+	 * datos de cheque
 	 */
 	private void limpiar() {
 		txtNombre.setText("");
@@ -330,15 +362,15 @@ public class panelDatos extends JPanel implements ActionListener {
 		txtIdentificacion.setText("");
 		principal.limpiar();
 	}
+
 	/**
-	 * Abrirá la interfaz donde mostrará los cheques hechos por el usuario 
+	 * Abrirá la interfaz donde mostrará los cheques hechos por el usuario
 	 */
 	private void listar() {
 		InterfazLista interfaz = new InterfazLista(principal);
 		if (interfaz.getPaneles() != null) {
 			interfaz.setVisible(true);
 		}
-
 	}
 
 	@Override
@@ -352,6 +384,11 @@ public class panelDatos extends JPanel implements ActionListener {
 		}
 		if (comando.equals(LISTAR)) {
 			listar();
+		}
+		if (comando.equals(CONSIGNAR)) {
+			principal.InterfazConsig = new InterfazConsignar(principal);
+			principal.InterfazConsig.setVisible(true);
+			
 		}
 
 	}
