@@ -207,14 +207,9 @@ public class InterfazCheque extends JFrame {
 			if(persona == null) {
 				JOptionPane.showMessageDialog(InterfazConsig, "No esta registrada la persona a quien desea consignar","consignaciones",JOptionPane.WARNING_MESSAGE);
 			}else {
-				try {
 				persona.consignar(unMonto);
 				JOptionPane.showMessageDialog(InterfazConsig, "la coginacion fue realizada correctamente","Consignaciones", JOptionPane.INFORMATION_MESSAGE);
 				principal.EscribirUsuarios("src/data/usuarios.txt");
-				}catch (Exception e) {
-					// TODO: handle exception
-					JOptionPane.showMessageDialog(InterfazConsig, "la coginacion no fue realizada correctamente revise los datos","Consignaciones", JOptionPane.ERROR_MESSAGE);
-				} 
 			}
 		}
 	}
