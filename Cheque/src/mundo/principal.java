@@ -21,7 +21,7 @@ public class principal {
 	 * carga el Arraylist con todas las personas y los cheques encontrados en los
 	 * archivos
 	 * 
-	 * @throws Exception
+	 * @throws Exception - por si es generado algún error
 	 */
 	public principal() throws Exception {
 		personas = new ArrayList<Persona>();
@@ -94,7 +94,7 @@ public class principal {
 			lector = new BufferedReader(new FileReader(datos));
 			texto = lector.readLine();
 		} catch (Exception e) {
-			throw new Exception("Error al cargar los datos almacenados de vehículos");
+			throw new Exception("Error al cargar los datos almacenados de usuarios");
 		}
 
 		while (texto != null) {
@@ -145,7 +145,7 @@ public class principal {
 			lector = new BufferedReader(new FileReader(datos));
 			texto = lector.readLine();
 		} catch (Exception e) {
-			throw new Exception("Error al cargar los datos almacenados de vehículos");
+			throw new Exception("Error al cargar los datos almacenados de cheques de usuarios");
 		}
 		while (texto != null) {
 			// Si comienza con # es comentario
@@ -175,7 +175,7 @@ public class principal {
 				// siguiente linea
 				texto = lector.readLine();
 			} catch (Exception e) {
-				throw new Exception("Error al cargar los datos almacenados de vehiculos");
+				throw new Exception("Error al cargar los datos almacenados de cheques de usuarios");
 			}
 		}
 	}

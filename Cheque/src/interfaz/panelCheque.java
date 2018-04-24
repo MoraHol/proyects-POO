@@ -90,7 +90,12 @@ public class panelCheque extends JPanel {
 	private JTextField txtFirma;
 
 	/**
-	 * crear el panel con todos sus datos.
+	 * 
+	 * @param fecha - trae la fecha de la realización del cheque
+	 * @param numero - contiene el numero del cheque
+	 * @param consignacion - contiene el monto a consignar
+	 * @param destinatario - persona a quien se consigno
+	 * @param firma - firma del propietario de la cuenta
 	 */
 	public panelCheque(String fecha, int numero, double consignacion, String destinatario,
 			String firma) {

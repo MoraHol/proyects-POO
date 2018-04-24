@@ -132,7 +132,7 @@ public class Persona {
 	}
 	/**
 	 * devuelve los cheques realizados por la persona
-	 * @param identificacion - numero de identificación de la persona a buscar
+	 * @param numero - numero de identificación de la persona a buscar
 	 * @return cheques realizados por la persona
 	 */
 	public Cheque buscarCheque(String numero) {
