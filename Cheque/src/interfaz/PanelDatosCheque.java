@@ -15,17 +15,33 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 
 public class PanelDatosCheque extends JPanel implements ActionListener {
+	// ---------------------------------------------------------------------------------
+	// Atributos
+	// ---------------------------------------------------------------------------------
+	/**
+	 * ventana principal del programa
+	 */
 	private InterfazCheque principal;
-	private JTextField txtDestinatario;
-	private JTextField txtMonto;
+	// ---------------------------------------------------------------------------------
+	// Atributos del panel
+	// ---------------------------------------------------------------------------------
+	/**
+	 * comando para generar cheque
+	 */
 	private static final String ACEPTAR = "aceptar";
+	/**
+	 * campo para escribir y visualizar el destinatario del cheque
+	 */
+	private JTextField txtDestinatario;
+	/**
+	 * Campo para escribir y visualizar el monto de cheque
+	 */
+	private JTextField txtMonto;
+	/**
+	 * Botón para generar cheque
+	 */
 	private JButton butAceptar;
-	private JLabel label_2;
-	private JLabel label_3;
-	private JLabel label_4;
-	private JLabel label_5;
-	private JLabel label_6;
-
+	
 	public PanelDatosCheque(InterfazCheque principalP) {
 		principal = principalP;
 		setPreferredSize(new Dimension(500, 150));
@@ -47,20 +63,15 @@ public class PanelDatosCheque extends JPanel implements ActionListener {
 		add(txtMonto);
 		txtMonto.setColumns(10);
 
-		label_2 = new JLabel("");
-		add(label_2);
+		add(new JLabel(""));
 
-		label_3 = new JLabel("");
-		add(label_3);
+		add(new JLabel(""));
 
-		label_4 = new JLabel("");
-		add(label_4);
+		add(new JLabel(""));
 
-		label_5 = new JLabel("");
-		add(label_5);
+		add(new JLabel(""));
 
-		label_6 = new JLabel("");
-		add(label_6);
+		add(new JLabel(""));
 
 		butAceptar = new JButton("Aceptar");
 		butAceptar.setActionCommand(ACEPTAR);

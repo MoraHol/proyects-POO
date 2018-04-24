@@ -11,7 +11,11 @@ import javax.swing.JSeparator;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.Window.Type;
-
+/**
+ * @version 2.0 23/04/2018
+ * @author Alexis Holguin
+ * 
+ */
 public class InterfazLista extends JFrame {
 	// -----------------------------------------------------------------
 	// Atributos

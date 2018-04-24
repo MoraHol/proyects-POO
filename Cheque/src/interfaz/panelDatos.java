@@ -31,7 +31,7 @@ public class panelDatos extends JPanel implements ActionListener {
 	// Atributos de la interfaz
 	// -----------------------------------------------------------------
 	/**
-	 * comadno para mostrar cheque
+	 * Comando para mostrar cheque
 	 */
 	private final static String LISTAR = "listar";
 	/**
@@ -122,11 +122,11 @@ public class panelDatos extends JPanel implements ActionListener {
 	/**
 	 * Selección multiple para el día
 	 */
-	private JComboBox<Integer> comboBoxDia;
+	private JComboBox<Object> comboBoxDia;
 	/**
 	 * Selección multiple para el Mes
 	 */
-	private JComboBox comboBoxMes;
+	private JComboBox<Object> comboBoxMes;
 	/**
 	 * Selección multiple para el año
 	 */
@@ -134,7 +134,7 @@ public class panelDatos extends JPanel implements ActionListener {
 	/**
 	 * Selección multiple para la calle
 	 */
-	private JComboBox comboBoxcalle;
+	private JComboBox<Object> comboBoxcalle;
 
 	// -----------------------------------------------------------------
 	// Constructores
@@ -148,7 +148,7 @@ public class panelDatos extends JPanel implements ActionListener {
 		// establece referencia a la ventana principal
 		principal = principalP;
 
-		// Esyablece el tamaño del layout
+		// Establece el tamaño del layout
 		setPreferredSize(new Dimension(800, 300));
 		setLayout(new GridLayout(9, 4, 0, 0));
 
@@ -206,15 +206,15 @@ public class panelDatos extends JPanel implements ActionListener {
 		butConsignar = new JButton("Consignar");
 		butConsignar.setActionCommand(CONSIGNAR);
 		butConsignar.addActionListener(this);
-		// comobo box para la fecha de nacimineto y el tipo de calle
-		comboBoxMes = new JComboBox();
-		comboBoxMes.setModel(new DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo",
-				"Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-		comboBoxcalle = new JComboBox();
-		comboBoxcalle
-				.setModel(new DefaultComboBoxModel(new String[] { "", "Avenida", "Calle", "Carrera", "Diagonal" }));
-		comboBoxDia = new JComboBox();
-		comboBoxDia.setModel(new DefaultComboBoxModel(
+		// Combo box para la fecha de nacimineto y el tipo de calle
+		comboBoxMes = new JComboBox<Object>();
+		comboBoxMes.setModel(new DefaultComboBoxModel<Object>(new String[] { "Enero", "Febrero", "Marzo", "Abril",
+				"Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+		comboBoxcalle = new JComboBox<Object>();
+		comboBoxcalle.setModel(
+				new DefaultComboBoxModel<Object>(new String[] { "", "Avenida", "Calle", "Carrera", "Diagonal" }));
+		comboBoxDia = new JComboBox<Object>();
+		comboBoxDia.setModel(new DefaultComboBoxModel<Object>(
 				new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15",
 						"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
 		comboBoxAño = new JComboBox<String>();
@@ -388,7 +388,7 @@ public class panelDatos extends JPanel implements ActionListener {
 		if (comando.equals(CONSIGNAR)) {
 			principal.InterfazConsig = new InterfazConsignar(principal);
 			principal.InterfazConsig.setVisible(true);
-			
+
 		}
 
 	}

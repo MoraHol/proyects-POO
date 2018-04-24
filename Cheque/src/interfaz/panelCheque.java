@@ -15,7 +15,11 @@ import javax.swing.border.TitledBorder;
 
 import mundo.Num_Letra;
 import net.miginfocom.swing.MigLayout;
-
+/**
+ * @version 2.0 23/04/2018
+ * @author Alexis Holguin
+ * 
+ */
 public class panelCheque extends JPanel {
 	// -----------------------------------------------------------------
 	// Atributos de la interfaz

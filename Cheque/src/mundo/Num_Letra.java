@@ -4,12 +4,31 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 public class Num_Letra {
+	// ----------------------------------------------------------------------------------
+	// Atributos
+	// ----------------------------------------------------------------------------------
+	/**
+	 * bandera para perfeccionar el convertidor
+	 */
 	boolean flag = false;
 
+	// ----------------------------------------------------------------------------------
+	// Constructor
+	// ----------------------------------------------------------------------------------
+	/**
+	 * constructor por defecto
+	 */
 	public Num_Letra() {
 		// TODO Apéndice de constructor generado automáticamente
 	}
 
+	/**
+	 * Convierte un numero de una sola cifra a letras
+	 * 
+	 * @param numero
+	 *            - numero de 1...9
+	 * @return - numero a letra
+	 */
 	private String unidad(int numero) {
 
 		String num = null;
@@ -53,6 +72,16 @@ public class Num_Letra {
 		return num;
 	}
 
+	// ----------------------------------------------------------------------------------
+	// Métodos
+	// ----------------------------------------------------------------------------------
+	/**
+	 * convierte un numero de dos cifras a letras
+	 * 
+	 * @param numero
+	 *            - numero de 1...99
+	 * @return - numero a letra
+	 */
 	private String decena(int numero) {
 
 		String num_letra = null;
@@ -151,6 +180,13 @@ public class Num_Letra {
 		return num_letra;
 	}
 
+	/**
+	 * convierte un numero de tres cifras a letras
+	 * 
+	 * @param numero
+	 *            - numero de 1...999
+	 * @return - numero a letra
+	 */
 	private String centena(int numero) {
 		String num_letra = null;
 		if (numero >= 100) {
@@ -198,6 +234,13 @@ public class Num_Letra {
 		return num_letra;
 	}
 
+	/**
+	 * convierte un numero a cadena de caracteres
+	 * 
+	 * @param numero
+	 *            - numero a convertir
+	 * @return - el mismo numero en cadena de caracteres
+	 */
 	private String numeroAString(double numero) {
 		DecimalFormat df = new DecimalFormat("#.##");
 		String number = "";
@@ -231,6 +274,13 @@ public class Num_Letra {
 		return number;
 	}
 
+	/**
+	 * convierte un numero a letra cualquiera a letra
+	 * 
+	 * @param num
+	 *            - numero a convertir
+	 * @return - numero a letra
+	 */
 	public String numletra(double num) {
 		String[] valores;
 		String number = numeroAString(num);
