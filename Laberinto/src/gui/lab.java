@@ -1,8 +1,6 @@
 package gui;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class lab {
 	public lab(int rows,int col) {
@@ -31,13 +29,6 @@ public class lab {
 	// 3 - goal
 	private int[][] maze;
 	private ArrayList<int[][]> Recorridos;
-	// use symbols to make reading the output easier...
-	// 0 - obstacle - '#'
-	// 1 - open space - '.'
-	// 2 - path taken - '+'
-	// 3 - goal - '*'
-	private static final char[] MAZE_SYMBOLS = { '.', '#', '+', '*' };
-
 	static int[][] fillMAze(int[][] maze) {
 		maze = new int[maze.length][maze[0].length];
 		Random rd = new Random();

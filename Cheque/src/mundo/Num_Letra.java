@@ -1,7 +1,6 @@
 package mundo;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class Num_Letra {
 	// ----------------------------------------------------------------------------------

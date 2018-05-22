@@ -1,7 +1,6 @@
 package operaciones;
 
 import java.util.Random;
-import clientes.*;
 
 public class Movimientos {
 	Random rd = new Random();

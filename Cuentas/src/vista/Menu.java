@@ -51,7 +51,7 @@ public class Menu {
 			System.out.println(cl.toString());
 			break;
 		case 6:
-			mn.procces = false;
+			Main.procces = false;
 			break;
 		
 		}

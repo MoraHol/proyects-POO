@@ -7,6 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class ImagenMuro extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1036455904009045377L;
+
 	public ImagenMuro() {
 		this.setSize(200, 200); // tamaño del panel
 	}

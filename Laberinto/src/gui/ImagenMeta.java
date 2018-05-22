@@ -7,6 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class ImagenMeta extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 218068253787260237L;
+
 	public ImagenMeta() {
 		this.setSize(200, 200); // tamaño del panel
 	}

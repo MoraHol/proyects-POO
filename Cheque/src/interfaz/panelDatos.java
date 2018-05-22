@@ -20,6 +20,10 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 public class panelDatos extends JPanel implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 320684108780940430L;
 	// -----------------------------------------------------------------
 	// Atributos
 	// -----------------------------------------------------------------

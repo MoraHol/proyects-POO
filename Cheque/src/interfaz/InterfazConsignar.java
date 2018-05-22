@@ -21,6 +21,11 @@ public class InterfazConsignar extends JFrame implements ActionListener {
 	// ---------------------------------------------------------------------------------
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8191939362571594574L;
+
+	/**
 	 * ventana principal del programa
 	 */
 	private InterfazCheque Principal;

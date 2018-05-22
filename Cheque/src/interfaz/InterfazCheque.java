@@ -24,10 +24,6 @@ import mundo.principal;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
-import java.awt.Button;
-import javax.swing.JButton;
 
 public class InterfazCheque extends JFrame {
 	/**

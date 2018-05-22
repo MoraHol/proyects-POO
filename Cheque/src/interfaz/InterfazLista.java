@@ -6,17 +6,18 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.awt.Window.Type;
 /**
  * @version 2.0 23/04/2018
  * @author Alexis Holguin
  * 
  */
 public class InterfazLista extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7113662010685227784L;
 	// -----------------------------------------------------------------
 	// Atributos
 	// -----------------------------------------------------------------

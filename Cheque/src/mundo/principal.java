@@ -83,6 +83,7 @@ public class principal {
 	 * @param archivo - ruta del archivo
 	 * @throws Exception
 	 */
+	@SuppressWarnings("resource")
 	private void cargarPersonas(String archivo) throws Exception {
 		Persona persona;
 		BufferedReader lector;
@@ -134,6 +135,7 @@ public class principal {
 	 * @param archivo - ruta del archivo
 	 * @throws Exception
 	 */
+	@SuppressWarnings("resource")
 	private void cargarCheques(String archivo) throws Exception {
 		Cheque cheque;
 		String texto, valores[], sIndentificacion, sFecha, sDestinatario;

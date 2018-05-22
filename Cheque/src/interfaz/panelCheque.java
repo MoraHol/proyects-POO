@@ -21,6 +21,10 @@ import net.miginfocom.swing.MigLayout;
  * 
  */
 public class panelCheque extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1857163760527116436L;
 	// -----------------------------------------------------------------
 	// Atributos de la interfaz
 	// -----------------------------------------------------------------

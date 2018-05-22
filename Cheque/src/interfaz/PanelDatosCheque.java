@@ -3,7 +3,6 @@ package interfaz;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.UIManager;
@@ -15,6 +14,10 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 
 public class PanelDatosCheque extends JPanel implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7045555238697548759L;
 	// ---------------------------------------------------------------------------------
 	// Atributos
 	// ---------------------------------------------------------------------------------

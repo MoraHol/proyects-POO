@@ -7,6 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class ImagenJugador extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6237833543388661768L;
+
 	public ImagenJugador() {
 		this.setSize(200, 200); // tamaño del panel
 	}
